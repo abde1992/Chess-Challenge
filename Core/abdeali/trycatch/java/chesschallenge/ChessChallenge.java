@@ -3,18 +3,26 @@ package abdeali.trycatch.java.chesschallenge;
 import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
 import abdeali.trycatch.java.chesschallenge.Algorithm.Result;
 import abdeali.trycatch.java.chesschallenge.ChessPiece.*;
+import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 
 
 public class ChessChallenge {
 
 	public static void main(String[] args) {
+		
 		ChessBoard chessBoard = new ChessBoard(7, 7, new ChessPiece[] {new King(), new King(), new Queen(), new Queen(), new Bishop(), new Bishop(), new Knight()});
 		
 		long begin = System.currentTimeMillis();
 
 		// Pass false so that the configurations are not stored (to reduce memory footprint)
 		// Need to pass true to show all the configurations
-		Result res = chessBoard.findUniqueConfig(false);
+		Result res=null;
+		try {
+			res = chessBoard.findUniqueConfig(false);
+		} catch (ChessChallengeException e) {
+			e.printStackTrace();
+			return;
+		}
 		
 		long end = System.currentTimeMillis();
 		

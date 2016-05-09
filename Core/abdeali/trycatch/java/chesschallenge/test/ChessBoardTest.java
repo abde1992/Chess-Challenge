@@ -12,11 +12,12 @@ import abdeali.trycatch.java.chesschallenge.ChessPiece.King;
 import abdeali.trycatch.java.chesschallenge.ChessPiece.Knight;
 import abdeali.trycatch.java.chesschallenge.ChessPiece.Queen;
 import abdeali.trycatch.java.chesschallenge.ChessPiece.Rook;
+import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 
 public class ChessBoardTest {
 
 	@Test
-	public void test() {
+	public void test() throws ChessChallengeException {
 		
 		ChessBoard chessBoard = new ChessBoard(3, 3, new ChessPiece[] {new King(), new King(), new Rook()});
 		Result res = chessBoard.findUniqueConfig(true);

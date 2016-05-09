@@ -4,11 +4,19 @@ import java.util.Arrays;
 import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
 
 
+// Generates permutations of the chess pieces, taking into account duplicate piece types
+// Call nextPermutation method to get next permutation
+// Ensures no permutation is repeated.
+// All permutations are returned once during the lifecycle of the object. After all permutations have been returned, the nextPermutation method returns null.
+// This is O(n^2) (worst case) implementation.
+// TODO: Replace sort by the quick reverse method
 public class PiecePermutations {
 
 	private ChessPiece[] pieces;
-	private boolean done = false;
+	private boolean done = false;		// true represents all permutations have been returned
 
+	// Constructor
+	// Initializes the permutation object
 	public PiecePermutations(ChessPiece[] pieces) {
 
 		this.pieces=pieces;
@@ -18,7 +26,7 @@ public class PiecePermutations {
 
 	}
 
-	// Helper method to reverse array of ChessPieces 
+	// Helper method to reverse an array of ChessPieces 
 	private void reverse(ChessPiece[] pieces, int l, int h) {
 		while (l < h) {
 			ChessPiece temp=pieces[l];
@@ -62,8 +70,6 @@ public class PiecePermutations {
 				pieces[smallIndex]=temp;
 
 				Arrays.sort(pieces,i+1,pieces.length);
-				// reverse the string on right of piece i, so that it is in non-decreasing order
-				//reverse( pieces, i + 1, pieces.length - 1 );
 			}
 		}
 		

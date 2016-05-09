@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
+import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 
 public class ChessBoard {
 
@@ -26,9 +27,16 @@ public class ChessBoard {
 
 	// Finds all unique configurations with the pieces, arranged so that none of them threaten each other
 	// storeConfig -- indicates if the configurations should be stored (as a HashMap)
-	public Result findUniqueConfig(boolean storeConfig) {
+	public Result findUniqueConfig(boolean storeConfig) throws ChessChallengeException {
 		Result res=new Result(width,height,storeConfig);
+		
+		// Initialize PiecePermutations helper object, which generates permutations of the chess pieces,
+		// taking into account duplicate types (eg. 2 kings, 3 rooks, etc.)
 		PiecePermutations pp=new PiecePermutations(pieces);
+		
+		// initialize a hash map to contain the placed pieces
+		// Keys are the locations of the pieces represented by linear offsets into the board
+		// Values are the ChessPiece objects
 		pieceLocation=new HashMap<Integer,ChessPiece>();
 
 		for(ChessPiece[] perm=pp.nextPermutation();perm!=null;perm=pp.nextPermutation()) {
@@ -60,7 +68,9 @@ public class ChessBoard {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void findNextPieceLocation(ChessPiece[] pieces,int pieceIndex,int boardOffset,Result res) {
+	private void findNextPieceLocation(ChessPiece[] pieces,int pieceIndex,int boardOffset,Result res) throws ChessChallengeException {
+		
+		if(pieceIndex>pieces.length) throw new ChessChallengeException("Invalid Piece Index");
 		
 		if(pieceIndex == pieces.length) {
 			// all chess pieces placed; save this configuration
@@ -82,6 +92,7 @@ public class ChessBoard {
 						int row = offset / width;
 						piece.setColumn(col);
 						piece.setRow(row);
+						
 						if(safeToPlacePiece(offset, piece)) {
 							// Place piece on board
 							pieceLocation.put(offset, piece);
