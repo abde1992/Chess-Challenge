@@ -9,10 +9,12 @@ import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
 public class Result {
 	
 	private int width,height;
+	private boolean storeConfig;
 
-	public Result(int width,int height) {
+	public Result(int width,int height,boolean storeConfig) {
 		this.width=width;
 		this.height=height;
+		this.storeConfig=storeConfig;
 		numConfig=0;
 	}
 	
@@ -20,8 +22,10 @@ public class Result {
 	private int numConfig;
 	
 	
+	// storeConfig - should this configuration be stored.
 	public void AddConfig(HashMap<Integer,ChessPiece> pieceLocation) {
-		//config.add(pieceLocation);
+		if(storeConfig)
+			config.add(pieceLocation);
 		numConfig++;
 	}
 	
