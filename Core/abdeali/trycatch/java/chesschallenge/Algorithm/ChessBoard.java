@@ -1,9 +1,6 @@
 package abdeali.trycatch.java.chesschallenge.Algorithm;
 
-import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.HashMap;
-import java.util.List;
 
 import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;

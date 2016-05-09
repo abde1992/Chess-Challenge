@@ -6,12 +6,7 @@ import org.junit.Test;
 
 import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
 import abdeali.trycatch.java.chesschallenge.Algorithm.Result;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.Bishop;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.King;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.Knight;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.Queen;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.Rook;
+import abdeali.trycatch.java.chesschallenge.ChessPiece.*;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 
 public class ChessBoardTest {

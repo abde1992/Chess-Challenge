@@ -1,6 +1,7 @@
 package abdeali.trycatch.java.chesschallenge.Algorithm;
 
 import java.util.Arrays;
+
 import abdeali.trycatch.java.chesschallenge.ChessPiece.ChessPiece;
 
 
@@ -27,6 +28,7 @@ public class PiecePermutations {
 	}
 
 	// Helper method to reverse an array of ChessPieces 
+	@SuppressWarnings("unused")
 	private void reverse(ChessPiece[] pieces, int l, int h) {
 		while (l < h) {
 			ChessPiece temp=pieces[l];

@@ -9,4 +9,16 @@ Program Input:
 
 As output, the program lists all the unique configurations for which all of the pieces can be placed on the board without threatening each other.
 
+To run:
+1. Import the files into an eclipse project and run ChessChallenge passing the command line arguments as follows --
+	java ChessChallenge m n nking nqueen nbishop nrook nknight storeConfig
+	nking, nqueen, etc. is the number of pieces of each type of piece
+	storeConfig - is a boolean value to indicate if the configurations should be listed on the console
+2. Run ChessChallengeTest or other test cases in the abdeali.trycatch.java.chesschallenge.test package
+3. Run the jar file "chess-challenge.jar" in the bin folder with the above command-line parameters
+4. Run the jar file "chess-challenge-test.jar" in the bin folder to run the test case (7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knight)
 
+
+TEST CASE: total number of unique configurations for a 7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knight:
+3063828 number of unique configurations found
+Time taken: 38083ms
