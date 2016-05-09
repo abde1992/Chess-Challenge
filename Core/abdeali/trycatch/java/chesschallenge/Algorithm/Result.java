@@ -33,6 +33,27 @@ public class Result {
 		return numConfig;
 	}
 	
+	// Return configuration i as a string formatted in a space-separated-value format
+	public String getConfigAsSSV(int i) {
+		HashMap<Integer,ChessPiece> pieceLocation=config.get(i);
+		StringBuilder sb = new StringBuilder();
+
+		int offset = 0;
+		for(int r = 0; r < height ; r++) {
+			
+			for(int c = 0; c < width; c++) {
+				ChessPiece piece = pieceLocation.get(Integer.valueOf(offset++));
+				sb.append(piece!=null?piece.getType():" ");
+				sb.append(" ");
+			}
+			sb.append("\n");
+			
+		}
+
+		return sb.toString();
+	}
+	
+	// Return configuration i as a string formatted for output
 	public String getConfigAsText(int i) {
 		
 		HashMap<Integer,ChessPiece> pieceLocation=config.get(i);
