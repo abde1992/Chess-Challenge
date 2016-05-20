@@ -10,8 +10,6 @@ public class ChessChallengeTest {
 
 	public static void main(String[] args) {
 		
-		ChessBoard chessBoard = new ChessBoard(7, 7, new ChessPiece[] {new King(), new King(), new Queen(), new Queen(), new Bishop(), new Bishop(), new Knight()});
-		
 		// Set to false so that the configurations are not stored (to reduce memory footprint)
 		// Set to true to store and list all the configurations
 		boolean storeConfig=false;
@@ -20,7 +18,12 @@ public class ChessChallengeTest {
 
 		Result res=null;
 		try {
+			
+			ChessBoard chessBoard = new ChessBoard(7, 7, new ChessPiece[] {new King(), new King(), 
+					new Queen(), new Queen(), new Bishop(), new Bishop(), new Knight()});
+			
 			res = chessBoard.findUniqueConfig(storeConfig);
+			
 		} catch (ChessChallengeException e) {
 			e.printStackTrace();
 			return;

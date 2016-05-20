@@ -1,35 +1,42 @@
 package abdeali.trycatch.java.chesschallenge.ChessPiece;
 
+import java.util.BitSet;
+
+import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
+
 
 public abstract class ChessPiece implements Comparable<ChessPiece> {
-	
-	protected int row=-1,col=-1;
-	
-	public abstract char getType();
-	public abstract boolean doesAttackLocation(int col,int row);
 
-	
-	public void setColumn(int col) {
-		this.col = col;
+	protected ChessBoard.Position pos;
+
+	public abstract PieceType getType();
+	public abstract char getChar();
+	// Does the piece attack the location represented by col and row
+	public abstract boolean doesAttackLocation(int col,int row);
+	// Return a mask representing positions that this piece can attack when placed at placePos
+	public abstract BitSet threatsMask(ChessBoard chessBoard, ChessBoard.Position placePos);
+
+
+	public void setPosition(ChessBoard.Position pos) {
+		this.pos=pos;
+	}
+
+	public ChessBoard.Position getPosition() {
+		return pos;
 	}
 	
 	public int getColumn() {
-		return col;
+		return pos.x;
 	}
-	
-	public void setRow(int row) {
-		this.row = row;
-	}
-	
 	public int getRow() {
-		return row;
+		return pos.y;
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return getType();
+		return getChar();
 	}	
-	
+
 	@Override
 	public boolean equals(Object other){
 		if(this == other) return true;
@@ -38,19 +45,19 @@ public abstract class ChessPiece implements Comparable<ChessPiece> {
 			return false;
 
 		ChessPiece p = (ChessPiece) other;
-		return getType()==p.getType();
+		return getChar()==p.getChar();
 	}
 
 	@Override
 	public int compareTo(ChessPiece p) {
-		if(getType() < p.getType()) return -1;
-		if(getType() == p.getType()) return 0;
+		if(getChar() < p.getChar()) return -1;
+		if(getChar() == p.getChar()) return 0;
 		return 1;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.valueOf(getType());
+		return getType().name();
 	}
 
 }

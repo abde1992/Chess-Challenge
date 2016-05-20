@@ -51,17 +51,17 @@ public class ChessChallenge {
 			for(int i=0;i<nknight;i++)
 				pieces[p++]=PieceFactory.createPiece(PieceType.KNIGHT);
 
-		} catch (InvalidPieceException e) {
+		} catch (ChessChallengeException e) {
 			e.printStackTrace();
 			return;
 		}
 
-		ChessBoard chessBoard = new ChessBoard(m, n, pieces);
 
 		long begin = System.currentTimeMillis();
 
 		Result res=null;
 		try {
+			ChessBoard chessBoard = new ChessBoard(m, n, pieces);
 			res = chessBoard.findUniqueConfig(storeConfig);
 		} catch (ChessChallengeException e) {
 			e.printStackTrace();
