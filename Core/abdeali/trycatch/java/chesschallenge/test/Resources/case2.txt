@@ -1,0 +1,41 @@
+4 4 0 0 0 2 4
+8
+R x x x 
+x H x H 
+x x R x 
+x H x H 
+
+x R x x 
+H x H x 
+x x x R 
+H x H x 
+
+x x R x 
+x H x H 
+R x x x 
+x H x H 
+
+x x x R 
+H x H x 
+x R x x 
+H x H x 
+
+H x H x 
+x R x x 
+H x H x 
+x x x R 
+
+H x H x 
+x x x R 
+H x H x 
+x R x x 
+
+x H x H 
+R x x x 
+x H x H 
+x x R x 
+
+x H x H 
+x x R x 
+x H x H 
+R x x x

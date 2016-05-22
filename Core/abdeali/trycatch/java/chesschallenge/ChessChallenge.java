@@ -1,10 +1,10 @@
 package abdeali.trycatch.java.chesschallenge;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
-import abdeali.trycatch.java.chesschallenge.Algorithm.Result;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.*;
+import abdeali.trycatch.java.chesschallenge.board.Result;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
-import abdeali.trycatch.java.chesschallenge.exception.InvalidPieceException;
+import abdeali.trycatch.java.chesschallenge.solver.CachedSolver;
+import abdeali.trycatch.java.chesschallenge.solver.Solver;
+import abdeali.trycatch.java.utils.Utils;
 
 
 public class ChessChallenge {
@@ -36,33 +36,14 @@ public class ChessChallenge {
 			return;
 		}
 
-		ChessPiece[] pieces=new ChessPiece[nking+nqueen+nbishop+nrook+nknight];
-		int p=0;
-
-		try {
-			for(int i=0;i<nking;i++)
-				pieces[p++]=PieceFactory.createPiece(PieceType.KING);
-			for(int i=0;i<nqueen;i++)
-				pieces[p++]=PieceFactory.createPiece(PieceType.QUEEN);
-			for(int i=0;i<nbishop;i++)
-				pieces[p++]=PieceFactory.createPiece(PieceType.BISHOP);
-			for(int i=0;i<nrook;i++)
-				pieces[p++]=PieceFactory.createPiece(PieceType.ROOK);
-			for(int i=0;i<nknight;i++)
-				pieces[p++]=PieceFactory.createPiece(PieceType.KNIGHT);
-
-		} catch (ChessChallengeException e) {
-			e.printStackTrace();
-			return;
-		}
-
-
 		long begin = System.currentTimeMillis();
 
 		Result res=null;
 		try {
-			ChessBoard chessBoard = new ChessBoard(m, n, pieces);
-			res = chessBoard.findUniqueConfig(storeConfig);
+			
+			Solver solver = new CachedSolver(m, n, Utils.getNumPieceMap(nking, nqueen, nbishop, nknight, nrook), storeConfig);
+			res = solver.solve();
+			
 		} catch (ChessChallengeException e) {
 			e.printStackTrace();
 			return;

@@ -1,0 +1,17 @@
+3 3 2 0 0 1 0
+4
+K x K
+x x x
+x R x
+
+K x x
+x x R
+K x x
+
+x x K
+R x x
+x x K
+
+x R x
+x x x
+K x K

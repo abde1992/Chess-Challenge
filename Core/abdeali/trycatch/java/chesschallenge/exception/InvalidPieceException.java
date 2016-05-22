@@ -6,5 +6,10 @@ public class InvalidPieceException extends ChessChallengeException {
 	public InvalidPieceException() {
 		super("Invalid piece");
 	}
+	
+	public InvalidPieceException(String msg) {
+		super(msg);
+	}
+
 
 }

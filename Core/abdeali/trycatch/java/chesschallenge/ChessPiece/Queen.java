@@ -1,9 +1,10 @@
 package abdeali.trycatch.java.chesschallenge.ChessPiece;
 
 import java.util.BitSet;
+import java.util.List;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard.Position;
+import abdeali.trycatch.java.chesschallenge.board.ChessBoard;
+import abdeali.trycatch.java.chesschallenge.board.ChessBoard.Position;
 
 public class Queen extends ChessPiece {
 
@@ -24,13 +25,15 @@ public class Queen extends ChessPiece {
 	}
 
 	@Override
-	public BitSet threatsMask(ChessBoard chessBoard, Position placePos) {
-		BitSet rookMask = new Rook().threatsMask(chessBoard, placePos);
-		BitSet bishopMask = new Bishop().threatsMask(chessBoard, placePos);
+	public ThreatsMask threatsMask(ChessBoard chessBoard, Position placePos) {
+		ThreatsMask rookMask = new Rook().threatsMask(chessBoard, placePos);
+		ThreatsMask bishopMask = new Bishop().threatsMask(chessBoard, placePos);
 
-		BitSet mask=rookMask;
-		mask.or(bishopMask);
-		return mask;
+		List<Integer> off=rookMask.offsets;
+		off.addAll(bishopMask.offsets);
+		BitSet mask=rookMask.mask;
+		mask.or(bishopMask.mask);
+		return new ThreatsMask(mask, off);
 	}
 
 	@Override

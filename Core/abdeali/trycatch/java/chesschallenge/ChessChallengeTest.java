@@ -1,9 +1,10 @@
 package abdeali.trycatch.java.chesschallenge;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
-import abdeali.trycatch.java.chesschallenge.Algorithm.Result;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.*;
+import abdeali.trycatch.java.chesschallenge.board.Result;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
+import abdeali.trycatch.java.chesschallenge.solver.CachedSolver;
+import abdeali.trycatch.java.chesschallenge.solver.Solver;
+import abdeali.trycatch.java.utils.Utils;
 
 
 public class ChessChallengeTest {
@@ -19,10 +20,9 @@ public class ChessChallengeTest {
 		Result res=null;
 		try {
 			
-			ChessBoard chessBoard = new ChessBoard(7, 7, new ChessPiece[] {new King(), new King(), 
-					new Queen(), new Queen(), new Bishop(), new Bishop(), new Knight()});
+			Solver solver = new CachedSolver(7, 7, Utils.getNumPieceMap(2, 2, 2, 1, 0), storeConfig);
 			
-			res = chessBoard.findUniqueConfig(storeConfig);
+			res = solver.solve();
 			
 		} catch (ChessChallengeException e) {
 			e.printStackTrace();

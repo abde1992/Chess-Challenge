@@ -1,8 +1,10 @@
 package abdeali.trycatch.java.chesschallenge.ChessPiece;
 
+import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.List;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
+import abdeali.trycatch.java.chesschallenge.board.ChessBoard;
 
 public class Rook extends ChessPiece {
 
@@ -19,22 +21,27 @@ public class Rook extends ChessPiece {
 	}
 
 	@Override
-	public BitSet threatsMask(ChessBoard chessBoard, ChessBoard.Position placePos) {
+	public ThreatsMask threatsMask(ChessBoard chessBoard, ChessBoard.Position placePos) {
 		
 		BitSet mask = new BitSet(chessBoard.getWidth() * chessBoard.getHeight());
+		List<Integer> off=new ArrayList<Integer>(); 
 
 		// Threats in the row
 		for (int x = 0; x < chessBoard.getWidth(); x++) {
-			mask.set(chessBoard.new Position(x, placePos.y).getLinearIndex());
+			if(x==placePos.x) continue;
+			ChessBoard.Position p=chessBoard.new Position(x, placePos.y);
+			off.add(p.getLinearIndex());
+			mask.set(p.getLinearIndex());
 		}
 		// Threats in the column
 		for (int y = 0; y < chessBoard.getHeight(); y++) {
-			mask.set(chessBoard.new Position(placePos.x, y).getLinearIndex());
+			if(y==placePos.y) continue;
+			ChessBoard.Position p=chessBoard.new Position(placePos.x, y);
+			off.add(p.getLinearIndex());
+			mask.set(p.getLinearIndex());
 		}
 
-		// Remove placePos
-		mask.clear(placePos.getLinearIndex());
-		return mask;
+		return new ThreatsMask(mask, off);
 	}
 
 	@Override

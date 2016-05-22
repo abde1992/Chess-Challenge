@@ -1,8 +1,9 @@
 package abdeali.trycatch.java.chesschallenge.ChessPiece;
 
 import java.util.BitSet;
+import java.util.List;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
+import abdeali.trycatch.java.chesschallenge.board.ChessBoard;
 
 
 public abstract class ChessPiece implements Comparable<ChessPiece> {
@@ -13,9 +14,21 @@ public abstract class ChessPiece implements Comparable<ChessPiece> {
 	public abstract char getChar();
 	// Does the piece attack the location represented by col and row
 	public abstract boolean doesAttackLocation(int col,int row);
+	public boolean doesAttackLocation(ChessBoard.Position otherPos) {
+		return doesAttackLocation(otherPos.x,otherPos.y);
+	}
 	// Return a mask representing positions that this piece can attack when placed at placePos
-	public abstract BitSet threatsMask(ChessBoard chessBoard, ChessBoard.Position placePos);
+	public abstract ThreatsMask threatsMask(ChessBoard chessBoard, ChessBoard.Position placePos);
 
+	// Cached object to store threatened positions in both mask and list form
+	public class ThreatsMask {
+		public BitSet mask;
+		public List<Integer> offsets;
+		public ThreatsMask(BitSet mask,List<Integer> offsets) {
+			this.mask=mask;
+			this.offsets=offsets;
+		}
+	}
 
 	public void setPosition(ChessBoard.Position pos) {
 		this.pos=pos;
