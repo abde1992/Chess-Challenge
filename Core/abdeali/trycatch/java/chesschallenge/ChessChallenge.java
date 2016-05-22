@@ -4,7 +4,7 @@ import abdeali.trycatch.java.chesschallenge.board.Result;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 import abdeali.trycatch.java.chesschallenge.solver.CachedSolver;
 import abdeali.trycatch.java.chesschallenge.solver.Solver;
-import abdeali.trycatch.java.utils.Utils;
+import abdeali.trycatch.java.chesschallenge.utils.Utils;
 
 
 public class ChessChallenge {

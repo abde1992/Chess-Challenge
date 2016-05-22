@@ -14,9 +14,7 @@ To run:
 	java ChessChallenge m n nking nqueen nbishop nrook nknight storeConfig
 	nking, nqueen, etc. is the number of pieces of each type of piece
 	storeConfig - is a boolean value to indicate if the configurations should be listed on the console
-2. Run ChessChallengeTest or other test cases in the abdeali.trycatch.java.chesschallenge.test package
-3. Run the jar file "chess-challenge.jar" in the bin folder with the above command-line parameters
-4. Run the jar file "chess-challenge-test.jar" in the bin folder to run the test case (7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knight)
+2. Run ChessChallengeTest or other test cases in the abdeali.trycatch.java.chesschallenge.test package. Make sure the JUnit test cases have their working directory set to be able to find the case data files (in the Resources folder). This is not a problem if you are running the eclipse project.
 
 
 TEST CASE: total number of unique configurations for a 7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knight:

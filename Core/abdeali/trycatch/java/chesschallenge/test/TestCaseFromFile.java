@@ -15,7 +15,7 @@ import abdeali.trycatch.java.chesschallenge.board.ChessBoard;
 import abdeali.trycatch.java.chesschallenge.board.ChessBoard.Position;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
 import abdeali.trycatch.java.chesschallenge.exception.InvalidPieceException;
-import abdeali.trycatch.java.utils.Utils;
+import abdeali.trycatch.java.chesschallenge.utils.Utils;
 
 public class TestCaseFromFile {
 	

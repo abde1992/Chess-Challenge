@@ -1,4 +1,4 @@
-package abdeali.trycatch.java.utils;
+package abdeali.trycatch.java.chesschallenge.utils;
 
 import java.util.HashMap;
 import java.util.Map;
