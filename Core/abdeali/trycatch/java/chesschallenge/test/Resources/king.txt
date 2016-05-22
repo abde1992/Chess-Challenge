@@ -1,0 +1,37 @@
+3 3 1 0 0 0 0
+9
+K x . 
+x x . 
+. . . 
+
+x K x 
+x x x 
+. . . 
+
+. x K 
+. x x 
+. . . 
+
+x x . 
+K x . 
+x x . 
+
+x x x 
+x K x 
+x x x 
+
+. x x 
+. x K 
+. x x 
+
+. . . 
+x x . 
+K x . 
+
+. . . 
+x x x 
+x K x 
+
+. . . 
+. x x 
+. x K 

@@ -1,4 +1,4 @@
-package abdeali.trycatch.java.chesschallenge.Algorithm;
+package abdeali.trycatch.java.chesschallenge.board;
 
 import java.util.Arrays;
 

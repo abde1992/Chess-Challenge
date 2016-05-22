@@ -21,4 +21,4 @@ To run:
 
 TEST CASE: total number of unique configurations for a 7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knight:
 3063828 number of unique configurations found
-Time taken: 38083ms
+Time taken: 12688ms

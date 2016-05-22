@@ -1,16 +1,15 @@
 package abdeali.trycatch.java.chesschallenge;
 
-import abdeali.trycatch.java.chesschallenge.Algorithm.ChessBoard;
-import abdeali.trycatch.java.chesschallenge.Algorithm.Result;
-import abdeali.trycatch.java.chesschallenge.ChessPiece.*;
+import abdeali.trycatch.java.chesschallenge.board.Result;
 import abdeali.trycatch.java.chesschallenge.exception.ChessChallengeException;
+import abdeali.trycatch.java.chesschallenge.solver.CachedSolver;
+import abdeali.trycatch.java.chesschallenge.solver.Solver;
+import abdeali.trycatch.java.utils.Utils;
 
 
 public class ChessChallengeTest {
 
 	public static void main(String[] args) {
-		
-		ChessBoard chessBoard = new ChessBoard(7, 7, new ChessPiece[] {new King(), new King(), new Queen(), new Queen(), new Bishop(), new Bishop(), new Knight()});
 		
 		// Set to false so that the configurations are not stored (to reduce memory footprint)
 		// Set to true to store and list all the configurations
@@ -20,7 +19,11 @@ public class ChessChallengeTest {
 
 		Result res=null;
 		try {
-			res = chessBoard.findUniqueConfig(storeConfig);
+			
+			Solver solver = new CachedSolver(7, 7, Utils.getNumPieceMap(2, 2, 2, 1, 0), storeConfig);
+			
+			res = solver.solve();
+			
 		} catch (ChessChallengeException e) {
 			e.printStackTrace();
 			return;
